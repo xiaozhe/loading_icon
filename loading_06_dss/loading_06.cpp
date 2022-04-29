@@ -196,7 +196,7 @@ void loading_06::paintEvent(QPaintEvent *)
     qpPaint.begin( this );
 
     QRect rectDraw(0, 0, 100, 100);
-    qpPaint.drawImage(rectDraw, * m_img_A001);
+    //qpPaint.drawImage(rectDraw, * m_img_A001);
 //    qpPaint.drawImage(rectDraw, * m_img_F001);
 
     draw_roate_image(&qpPaint, m_rotate_f004, m_img_F004, rectDraw );
