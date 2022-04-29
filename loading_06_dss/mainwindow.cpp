@@ -65,7 +65,7 @@ void MainWindow::on_pb_color_replace_clicked()
     t_u_color_rgb * rgbSrc = reinterpret_cast<t_u_color_rgb *>(img_src->bits());
     int iCountBits = img_src->width() * img_src->height();
     while( iCountBits -- > 0 ){
-        rgbSrc->rgba = (rgbSrc->rgba_bits[3] > 0) ? 0xD0FFFFFF : rgbSrc->rgba; // A B G R
+        rgbSrc->rgba = (rgbSrc->rgba_bits[3] > 0) ? 0xD0FFFFFF : rgbSrc->rgba; // A R G B
         rgbSrc ++;
     }
 
