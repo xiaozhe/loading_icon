@@ -24,7 +24,7 @@ background-color: #000000;
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>101</width>
+      <width>121</width>
       <height>51</height>
      </rect>
     </property>
@@ -36,6 +36,25 @@ background-color:#FFFFFF;
     </property>
     <property name="text">
      <string>Merge Img</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pb_color_replace">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>0</y>
+      <width>121</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+color:#00;
+background-color:#FFFFFF;
+}</string>
+    </property>
+    <property name="text">
+     <string>Color replace</string>
     </property>
    </widget>
   </widget>
