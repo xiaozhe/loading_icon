@@ -52,8 +52,11 @@ private:
 private:
     quint8 m_circle_stage;
     quint8 m_circle_stage_times;
+    quint8 m_timer_times_run;
     QTimer * m_timer_repaint;
 
+    void fun_paint_loading(QPainter *_painter);
+    
 private slots:
     void slot_timer_repaint();
 

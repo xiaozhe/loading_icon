@@ -4,6 +4,7 @@
 #include <QMatrix>
 #include <QTimer>
 #include <QDebug>
+#include <QFile>
 
 namespace XZ {
 namespace Wgt {
@@ -28,11 +29,11 @@ void loading_06::slot_timer_repaint()
         }
     }
 
-    int iTimesRun = m_circle_stage * 9 + m_circle_stage_times;
+    m_timer_times_run = m_circle_stage * 9 + m_circle_stage_times;
 
-    m_rotate_h001 = (360.0 / 18.0) * iTimesRun * -1;
-    m_rotate_g001 = (360.0 / 36.0) * iTimesRun;
-    m_rotate_k001 = (360.0 / 36.0) * iTimesRun;
+    m_rotate_h001 = (360.0 / 18.0) * m_timer_times_run * -1;
+    m_rotate_g001 = (360.0 / 36.0) * m_timer_times_run;
+    m_rotate_k001 = (360.0 / 36.0) * m_timer_times_run;
 
 //    m_rotate_g001 = 0;
 //    m_rotate_k001 = 0;
@@ -142,6 +143,7 @@ loading_06::loading_06(QWidget *parent) : QWidget(parent)
     connect(m_timer_repaint, SIGNAL(timeout()), this, SLOT(slot_timer_repaint()));
     m_timer_repaint->start();
 
+    slot_timer_repaint();
 }
 
 loading_06::~loading_06()
@@ -190,42 +192,68 @@ void loading_06::draw_roate_image(QPainter * _paint, qreal _rot, QImage * _img, 
     delete  imgRot;
 }
 
-void loading_06::paintEvent(QPaintEvent *)
+void loading_06::fun_paint_loading(QPainter * _painter)
 {
-    QPainter qpPaint;
-    qpPaint.begin( this );
-
     QRect rectDraw(0, 0, 100, 100);
     //qpPaint.drawImage(rectDraw, * m_img_A001);
 //    qpPaint.drawImage(rectDraw, * m_img_F001);
 
-    draw_roate_image(&qpPaint, m_rotate_f004, m_img_F004, rectDraw );
-    draw_roate_image(&qpPaint, m_rotate_f003, m_img_F003, rectDraw );
-    draw_roate_image(&qpPaint, m_rotate_f002, m_img_F002, rectDraw );
-    draw_roate_image(&qpPaint, m_rotate_f001, m_img_F001, rectDraw );
+    draw_roate_image(_painter, m_rotate_f004, m_img_F004, rectDraw );
+    draw_roate_image(_painter, m_rotate_f003, m_img_F003, rectDraw );
+    draw_roate_image(_painter, m_rotate_f002, m_img_F002, rectDraw );
+    draw_roate_image(_painter, m_rotate_f001, m_img_F001, rectDraw );
 
-    draw_roate_image(&qpPaint, m_rotate_g001, m_img_G001, rectDraw );
-    //draw_roate_image(&qpPaint, m_rotate_h001, m_img_H001, rectDraw );
+    draw_roate_image(_painter, m_rotate_g001, m_img_G001, rectDraw );
+    //draw_roate_image(_painter, m_rotate_h001, m_img_H001, rectDraw );
 
-//    draw_roate_image(&qpPaint, m_rotate_i004, m_img_I004, rectDraw );
-//    draw_roate_image(&qpPaint, m_rotate_i003, m_img_I003, rectDraw );
-//    draw_roate_image(&qpPaint, m_rotate_i002, m_img_I002, rectDraw );
-//    draw_roate_image(&qpPaint, m_rotate_i001, m_img_I001, rectDraw );
-    draw_roate_image(&qpPaint, m_rotate_g001 * -1, m_img_I004, rectDraw );
-    draw_roate_image(&qpPaint, m_rotate_g001 * -1, m_img_I003, rectDraw );
-    draw_roate_image(&qpPaint, m_rotate_g001 * -1, m_img_I002, rectDraw );
-    draw_roate_image(&qpPaint, m_rotate_g001 * -1, m_img_I001, rectDraw );
+//    draw_roate_image(_painter, m_rotate_i004, m_img_I004, rectDraw );
+//    draw_roate_image(_painter, m_rotate_i003, m_img_I003, rectDraw );
+//    draw_roate_image(_painter, m_rotate_i002, m_img_I002, rectDraw );
+//    draw_roate_image(_painter, m_rotate_i001, m_img_I001, rectDraw );
+    draw_roate_image(_painter, m_rotate_g001 * -1, m_img_I004, rectDraw );
+    draw_roate_image(_painter, m_rotate_g001 * -1, m_img_I003, rectDraw );
+    draw_roate_image(_painter, m_rotate_g001 * -1, m_img_I002, rectDraw );
+    draw_roate_image(_painter, m_rotate_g001 * -1, m_img_I001, rectDraw );
 
-    draw_roate_image(&qpPaint, m_rotate_f004, m_img_J004, rectDraw );
-    draw_roate_image(&qpPaint, m_rotate_f003, m_img_J003, rectDraw );
-    draw_roate_image(&qpPaint, m_rotate_f002, m_img_J002, rectDraw );
-    draw_roate_image(&qpPaint, m_rotate_f001, m_img_J001, rectDraw );
+    draw_roate_image(_painter, m_rotate_f004, m_img_J004, rectDraw );
+    draw_roate_image(_painter, m_rotate_f003, m_img_J003, rectDraw );
+    draw_roate_image(_painter, m_rotate_f002, m_img_J002, rectDraw );
+    draw_roate_image(_painter, m_rotate_f001, m_img_J001, rectDraw );
 
-    draw_roate_image(&qpPaint, m_rotate_k001, m_img_K001, rectDraw );
+    draw_roate_image(_painter, m_rotate_k001, m_img_K001, rectDraw );
 
-    draw_roate_image(&qpPaint, m_rotate_k001, m_img_L001, rectDraw );
-    draw_roate_image(&qpPaint, m_rotate_k001, m_img_L002, rectDraw );
-    draw_roate_image(&qpPaint, m_rotate_k001, m_img_L003, rectDraw );
+    draw_roate_image(_painter, m_rotate_k001, m_img_L001, rectDraw );
+    draw_roate_image(_painter, m_rotate_k001, m_img_L002, rectDraw );
+    draw_roate_image(_painter, m_rotate_k001, m_img_L003, rectDraw );
+}
+
+void loading_06::paintEvent(QPaintEvent *)
+{
+    QPainter qpPaint;
+    qpPaint.begin( this );
+    fun_paint_loading(&qpPaint);
+    qpPaint.end();
+
+    QString sSave = QString("./loading_06_%1.png").arg(m_timer_times_run, 3, 10, QChar('0'));
+    if( ! QFile::exists( sSave )){
+        QImage * img_save = new QImage(100, 100, QImage::Format_ARGB32);
+        img_save->fill(QColor(0, 0, 0, 0));
+        QPainter * p_qp_img = new QPainter();
+
+        p_qp_img->begin(img_save);
+        fun_paint_loading(p_qp_img);
+        p_qp_img->end();
+        img_save->save(sSave, "png", 100);
+        delete img_save;
+        delete p_qp_img;
+//        QImage imgSave(100, 100, QImage::Format_ARGB32);//QImage::Format_ARGB32背景是透明
+//        QPainter qpImg;
+
+//        qpImg.begin(&imgSave);
+//        fun_paint_loading(&qpImg);
+//        qpImg.end();
+//        imgSave.save(sSave, "png", 100);
+    }
 
 //    QString sLog = QString("");
 //    sLog += QString("%1").arg(m_rotate_f001, 8, 'g', 3, QChar(' '));
