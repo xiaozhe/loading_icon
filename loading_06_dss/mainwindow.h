@@ -20,6 +20,9 @@ public:
 protected:
     void showEvent(QShowEvent *) override;
 
+private slots:
+    void on_pb_merge_png_clicked();
+
 private:
     Ui::MainWindow *ui;
 
