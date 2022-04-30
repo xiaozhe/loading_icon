@@ -1,0 +1,21 @@
+<RCC>
+    <qresource prefix="/imgs">
+        <file>img_02/100_G005.png</file>
+        <file>img_02/100_G004.png</file>
+        <file>img_02/100_G003.png</file>
+        <file>img_02/100_G002.png</file>
+        <file>img_02/100_G001.png</file>
+        <file>img_02/100_F006.png</file>
+        <file>img_02/100_F005.png</file>
+        <file>img_02/100_F004.png</file>
+        <file>img_02/100_F003.png</file>
+        <file>img_02/100_F002.png</file>
+        <file>img_02/100_F001.png</file>
+        <file>img_02/100_E001.png</file>
+        <file>img_02/100_D001.png</file>
+        <file>img_02/100_C002.png</file>
+        <file>img_02/100_C001.png</file>
+        <file>img_02/100_B001.png</file>
+        <file>img_02/100_A001.png</file>
+    </qresource>
+</RCC>
