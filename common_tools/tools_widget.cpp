@@ -14,16 +14,17 @@ void XTWidget::draw_roate_image(QPainter *_paint, qreal _rot, QImage *_img, QRec
     QMatrix  matrix;
     matrix.rotate( _rot );
 
+    qreal qrSrcWidth = _img->width();
+    qreal qrSrcHeigh = _img->height();
+
     QImage * imgRot = new QImage();
     * imgRot = _img->transformed( matrix );
 
-    qreal qrTWidth = _tar.width();
-    qreal qrTHeight = _tar.height();
     qreal qrWidth = imgRot->width();
     qreal qrHeight = imgRot->height();
-    qreal qrX = (qrWidth - qrTWidth) / 2;
-    qreal qrY = (qrHeight - qrTHeight) / 2;
-    QRect rectImg(qrX, qrY, qrTWidth, qrTHeight);
+    qreal qrX = (qrWidth - qrSrcWidth) / 2;
+    qreal qrY = (qrHeight - qrSrcHeigh) / 2;
+    QRect rectImg(qrX, qrY, qrSrcWidth, qrSrcHeigh);
     _paint->drawImage(_tar, * imgRot, rectImg);
     delete  imgRot;
 }
