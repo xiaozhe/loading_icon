@@ -36,6 +36,7 @@ bool XTWidget::load_img(QImage *&_img, QString _file)
         _img->load(_file);
         return true;
     }
+    qDebug() << "can find file: " << _file;
     _img = new QImage();
     return false;
 }

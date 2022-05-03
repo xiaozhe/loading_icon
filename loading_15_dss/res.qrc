@@ -1,0 +1,21 @@
+<RCC>
+    <qresource prefix="/imgs">
+        <file>img_15/360_E0005.png</file>
+        <file>img_15/360_E0004.png</file>
+        <file>img_15/360_E0003.png</file>
+        <file>img_15/360_E0002.png</file>
+        <file>img_15/360_E0001.png</file>
+        <file>img_15/360_D0005.png</file>
+        <file>img_15/360_D0004.png</file>
+        <file>img_15/360_D0003.png</file>
+        <file>img_15/360_D0002.png</file>
+        <file>img_15/360_D0001.png</file>
+        <file>img_15/360_C0001.png</file>
+        <file>img_15/360_B0001.png</file>
+        <file>img_15/360_E1005.png</file>
+        <file>img_15/360_E1004.png</file>
+        <file>img_15/360_E1003.png</file>
+        <file>img_15/360_E1002.png</file>
+        <file>img_15/360_E1001.png</file>
+    </qresource>
+</RCC>
